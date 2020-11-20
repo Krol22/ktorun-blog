@@ -65,25 +65,48 @@ header {
 	justify-content: space-between;
 }
 
-hr {
-	width: 100%;
-	position: absolute;
-	left: 0;
-	color: var(--background-secondary);
-	top: 6rem;
-}
-
 header h1 {
 	/* font-weight: bold; */
 	letter-spacing: 0.45rem;
-	font-size: 3rem;
-	font-family: VT323;
+	font-size: 2.3rem;
+	font-family: BigBlue_Terminal;
+	display: block;
+}
+
+header h1:after {
+	content: "";
+	display: inline-block;
+	margin-left: 0.5rem;
+	width: 20px;
+	height: 40px;
+	transform: translateY(5px);
+	background-color: var(--foreground);
+	animation: blink .7s steps(1) infinite;
+	animation-direction: alternate;
+	animation-fill-mode: both;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
 }
 
 header a {
 	color: var(--foreground);
 	text-decoration: none;
 	letter-spacing: 0.3rem;
+}
+
+hr {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	color: var(--background-secondary);
+	top: 6rem;
 }
 
 .post-list li {
