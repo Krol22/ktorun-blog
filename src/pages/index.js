@@ -1,27 +1,28 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
+
+import Layout from "../components/Layout";
+import PostList from "../components/PostList";
 
 export default function Home({ data }) {
-  const pages = data.allMarkdownRemark.nodes.map(({ frontmatter }) => ({...frontmatter}));
+  const posts = data.allMarkdownRemark.nodes.map(({ frontmatter }) => ({...frontmatter}));
 
   return (
-    <div>
-      <h1>Hello!</h1>
-      <ul>
-        {pages.map(({ title, slug, date }) => <Link to={slug}><li>{title}</li></Link>)}
-      </ul>
-    </div>
+    <Layout>
+      <PostList posts={posts}/>
+    </Layout>
   )
 }
 
 export const query = graphql`
   query BlogPostsQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
         frontmatter {
           title
           slug
-          date
+          date(formatString: "MMMM DD, YYYY")
+          description
         }
       }
     }
