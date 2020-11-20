@@ -8,7 +8,7 @@ export default function Home({ data }) {
   const posts = data.allMarkdownRemark.nodes.map(({ frontmatter }) => ({...frontmatter}));
 
   return (
-    <Layout>
+    <Layout title="Blog">
       <PostList posts={posts}/>
     </Layout>
   )

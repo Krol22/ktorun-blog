@@ -11,7 +11,7 @@ export default function Template({
   const { date, title, category } = frontmatter;
 
   return (
-    <Layout>
+    <Layout title={title}>
       <article>
         <nav className="post__bar">
           <div className="post__details">
