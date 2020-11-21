@@ -283,7 +283,7 @@ article pre code {
 }
 
 .footer__element {
-	padding: 0 0.4rem;
+	padding: 0 0.8rem;
 	color: var(--background-secondary);
 }
 
@@ -296,14 +296,21 @@ article pre code {
 	content: "";
 	width: 8px;
 	height: 16px;
-	margin-left: 4px;
 	background-color: var(--foreground);
 	display: inline-block;
 	transform: translateY(2px);
 }
 
+.footer__mode--read {
+	--background-mode-color: var(--cyan);
+}
+
+.footer__mode--command {
+	--background-mode-color: var(--purple);
+}
+
 .footer__mode {
-	background-color: var(--cyan);
+	background-color: var(--background-mode-color);
 	font-weight: bold;
 }
 
@@ -317,4 +324,14 @@ article pre code {
 
 .footer__line {
 	background-color: var(--cyan);
+}
+
+.footer__input {
+	border: none;
+	background-color: var(--background-secondary);
+	font-family: inherit;
+	font-size: 0.9rem;
+	outline: none;
+	color: transparent;
+	text-shadow: 0 0 0 var(--foreground);
 }
