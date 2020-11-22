@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import CommandMenu from "./CommandMenu";
+import { commands } from "../commands";
+
 const modes = [
   {
     text: "READ",
@@ -9,25 +12,87 @@ const modes = [
     text: "COMMAND",
     class: "footer__mode--command",
   },
-]
+];
+
 
 const EasterEgg = () => {
-  const [ mode, setMode ] = useState(1);
+  const [ mode, setMode ] = useState(0);
   const [ command, setCommand ] = useState("");
+
+  const [ menuVisible, setMenuVisible ] = useState(false);
+  const [ selectedOption, setSelectedOption ] = useState(0);
+
   const inputRef = useRef();
 
   const onKeyDown = (event) => {
+    console.log(event);
     switch (mode) {
       case 1: {
-        if (event.keyCode === 27) {
+        if (event.keyCode === 27) { //ESC
           setMode(0);
         }
 
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13) { //Enter
           setMode(0);
           setCommand("");
         }
+
+        if (event.keyCode === 9) { //Tab
+          event.stopPropagation();
+          event.preventDefault();
+
+          if (!menuVisible) { // openMenu
+            setMenuVisible(true); 
+            setSelectedOption(0);
+            break;
+          }
+
+          if (menuVisible) {
+            if (event.shiftKey) {
+              if (selectedOption === 0) {
+                setSelectedOption(commands.length - 1);
+                return;
+              }
+
+              setSelectedOption(selectedOption - 1);
+              return
+            }
+            if (selectedOption === commands.length - 1) {
+              setSelectedOption(0);
+              return;
+            }
+
+            setSelectedOption(selectedOption + 1);
+          }
+        }
+
+        if (event.keyCode === 32) { //Space
+          if (menuVisible) {
+            setMenuVisible(false);
+          }
+        }
+
         break;
+      }
+    }
+
+    if (menuVisible) {
+      if (event.keyCode === 38) { //Arrow up
+        if (selectedOption === 0) {
+          setSelectedOption(commands.length - 1);
+          return;
+        }
+
+        setSelectedOption(selectedOption - 1);
+      }
+
+      if (event.keyCode === 40) { //Arrow down
+        if (selectedOption === commands.length - 1) {
+          setSelectedOption(0);
+          return;
+        }
+
+        setSelectedOption(selectedOption + 1);
       }
     }
   };
@@ -48,6 +113,7 @@ const EasterEgg = () => {
     switch (mode) {
       case 0:
         inputRef.current.blur();
+        setMenuVisible(false);
         break;
       case 1:
         inputRef.current.style.width = `0ch`;
@@ -55,6 +121,18 @@ const EasterEgg = () => {
         break;
     }
   }, [mode]);
+
+  useEffect(() => {
+    if (!menuVisible) {
+      return;
+    }
+
+    setCommand(commands[selectedOption].name);
+  }, [selectedOption, menuVisible]);
+
+  useEffect(() => {
+    inputRef.current.style.width = `${command.length}ch`;
+  }, [command])
 
   const onInputChange = (event) => {
     setCommand(event.target.value);
@@ -69,10 +147,11 @@ const EasterEgg = () => {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keypress", onKeyPress);
     }
-  }, [mode]);
+  });
 
   return (
     <footer className={`footer ${mode !== 0 && "footer--opened"}`}>
+      <CommandMenu visible={menuVisible} selectedItem={selectedOption} command={command}/>
       <div className="footer__status">
         <div>
           <div className={`footer__element footer__mode ${modes[mode].class}`}>

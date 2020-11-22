@@ -23,9 +23,19 @@ body {
 	font-family: Inconsolata, monospace;
 }
 
+#___gatsby, #gatsby-focus-wrapper {
+	display: block;
+}
+
+div {
+	display: inline-block;
+}
+
 .blog {
+	display: block;
 	margin: 0 auto;
 	padding: 2rem;
+	margin-bottom: 1rem;
 	font-size: 1rem;
 	max-width: 1000px;
 	min-height: calc(100vh - 4rem);
@@ -278,10 +288,6 @@ article pre code {
 	bottom: 0;
 }
 
-.footer div {
-	display: inline-block;
-}
-
 .footer__element {
 	padding: 0 0.8rem;
 	color: var(--background-secondary);
@@ -334,4 +340,26 @@ article pre code {
 	outline: none;
 	color: transparent;
 	text-shadow: 0 0 0 var(--foreground);
+}
+
+.command-menu {
+	position: absolute;	
+	background-color: var(--foreground);
+	color: var(--background);
+	display: none;
+	transform: translateY(-100%);
+}
+
+.command-menu--open {
+	display: block;
+}
+
+.command {
+	padding: 0 0.4rem;
+}
+
+.command--selected {
+	font-weight: bold;
+	color: var(--foreground);
+	background-color: var(--background-secondary);
 }

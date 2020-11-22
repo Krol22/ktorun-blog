@@ -7,7 +7,7 @@ const Navigation = () => (
       <h1><Link to="/">K.Torun</Link></h1>
       <nav>
         <Link to="/">HOME</Link> / 
-        <a href="https://ktorun.xyz"> WEBPAGE</a>
+        <a target="_blank" href="https://ktorun.xyz"> WEBPAGE</a>
       </nav>
     </header>
     <hr />
