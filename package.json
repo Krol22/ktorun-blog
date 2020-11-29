@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint:md": "markdownlint src/**/*.md"
   },
   "dependencies": {
     "gatsby": "^2.25.3",
@@ -23,7 +24,10 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "2.1.2"
+    "markdownlint-cli": "^0.25.0",
+    "prettier": "2.1.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "repository": {
     "type": "git",
@@ -31,5 +35,20 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "yarn format",
+      "git add"
+    ],
+    "src/**/*.md": [
+      "yarn lint:md --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
