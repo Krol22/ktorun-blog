@@ -5,6 +5,7 @@ category: "tech"
 pageTitle: Yet another dot files
 description: "Semantics in HTML. In HTML, for example, the h1 element is a semantic element, which gives the text it wraps Semantic HTML elements are those that clearly describe their meaning in a human- and machine-readable way. Elements such as"
 ---
+
 # YADF
 
 Yet another dot files.
@@ -53,28 +54,28 @@ it copies `nvim` folder to `~/.config/`. You still need to run command
 
 After plugins installation you need to run :
 
-- ``` :CocInstall coc-tsserver ```
-- ``` :CocInstall coc-emmet ```
+- `:CocInstall coc-tsserver`
+- `:CocInstall coc-emmet`
 
 to install all extensions for [coc.nvim](https://github.com/neoclide/coc.nvim).
 
 ## Includes aliases
 
 ```bash
-alias cp="cp -vi"
-alias mv="mv -vi"
-alias rm="rm -i"
-alias vim="nvim"
-alias vi="nvim"
+  alias cp="cp -vi"
+  alias mv="mv -vi"
+  alias rm="rm -i"
+  alias vim="nvim"
+  alias vi="nvim"
 
-alias ls="colorls"
-alias l="colorls"
+  alias ls="colorls"
+  alias l="colorls"
 
-alias gd="git diff"
-alias gc="git commit -m"
-alias gs="git status"
-alias gp="git push origin"
-alias glp="gp -l"
+  alias gd="git diff"
+  alias gc="git commit -m"
+  alias gs="git status"
+  alias gp="git push origin"
+  alias glp="gp -l"
 ```
 
 ## Todo

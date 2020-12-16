@@ -1,18 +1,22 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
-const Navigation = () => (
+const Header = () => (
   <>
     <header>
-      <h1><Link to="/">K.Torun</Link></h1>
+      <h1>
+        <Link to="/">K.Torun</Link>
+      </h1>
       <nav>
-        <Link to="/">HOME</Link> / 
-        <a target="_blank" href="https://ktorun.xyz"> WEBPAGE</a>
+        <Link to="/">HOME</Link> /
+        <a target="_blank" rel="noopener norefer" href="https://ktorun.xyz">
+          {" "}
+          WEBPAGE
+        </a>
       </nav>
     </header>
     <hr />
   </>
-);
+)
 
-export default Navigation;
-
+export default Header
