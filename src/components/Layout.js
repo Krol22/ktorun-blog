@@ -15,6 +15,7 @@ const Layout = ({ title, description = "", children }) => (
       <title>{title} - K.Torun</title>
       <meta name="description" content={description} />
     </Helmet>
+    <hr />
     <main>{children}</main>
     <Footer />
     <EasterEgg />

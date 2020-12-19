@@ -2,16 +2,16 @@
 	--background: #1a1c23;
 	--background-secondary: #282a36;
 	--current-line: #44475a;
-	--foreground: #d2d4de;
-	/* --foreground: #e8e9ee; */
+	/* --foreground: #e2e4ee; */
+	--foreground: #e8e9ee;
 	--cyan: #25b2bc;
-	/* --green: #09f7a0; */
-	--green: #8cd499;
-	/* --orange: #f09383; */
-	--orange: #e39e92;
+	--green: #09f7a0;
+	/* --green: #8cd499; */
+	--orange: #f09383;
+	/* --orange: #e39e92; */
 	--pink: #e95678;
-	/* --purple: #b877db; */
-	--purple: #a27cb6;
+	--purple: #b877db;
+	/* --purple: #a27cb6; */
 	--red: #f43e5c;
 	--yellow: #fac29a;
 }

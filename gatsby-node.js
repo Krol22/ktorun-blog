@@ -1,13 +1,10 @@
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions;
-  const blogPostTemplate = require.resolve('./src/templates/blogTemplate');
+  const { createPage } = actions
+  const blogPostTemplate = require.resolve("./src/templates/blogTemplate")
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           node {
             frontmatter {
@@ -17,7 +14,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
     }
-  `);
+  `)
 
   // Handle errors
   if (result.errors) {
@@ -25,7 +22,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMdx.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
       component: blogPostTemplate,
@@ -33,6 +30,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         // additional data can be passed via context
         slug: node.frontmatter.slug,
       },
-    });
-  });
+    })
+  })
 }

@@ -4,19 +4,19 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-console.log(`${__dirname}/src/data/posts`);
+console.log(`${__dirname}/src/data/posts`)
 
 module.exports = {
   /* Your site config here */
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'blog-posts',
+        name: "blog-posts",
         path: `${__dirname}/src/data/posts`,
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-transformer-remark',
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-mdx",
   ],
-};
+}

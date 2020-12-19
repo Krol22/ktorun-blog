@@ -25,7 +25,7 @@ div {
 	padding: 2rem;
 	margin-bottom: 1rem;
 	font-size: 1rem;
-	max-width: 1000px;
+	max-width: 1400px;
 }
 
 h1 {
@@ -59,15 +59,15 @@ em {
 header {
 	display: flex;
 	align-items: center;
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 	justify-content: space-between;
 }
 
-header h1 {
-	letter-spacing: 0.45rem;
-	font-size: 2.3rem;
+header h1 a {
+	letter-spacing: 0.15rem;
+	font-size: 2.1rem;
 	font-family: BigBlue_Terminal;
-	display: block;
+	color: var(--green);
 }
 
 header h1:after {
@@ -77,7 +77,7 @@ header h1:after {
 	width: 20px;
 	height: 40px;
 	transform: translateY(5px);
-	background-color: var(--foreground);
+	background-color: var(--green);
 	animation: blink .7s steps(1) infinite;
 	animation-direction: alternate;
 	animation-fill-mode: both;
@@ -102,53 +102,69 @@ header a {
 }
 
 hr {
-	width: 100%;
-	position: absolute;
-	left: 0;
+	width: 800%;
+	position: relative;
+	transform: translateX(-50%);
 	color: var(--background-secondary);
-	top: 6rem;
+}
+
+.post-section {
+	margin-top: 2rem;
+	width: 80%;
+}
+
+.post-section h2 {
+	font-weight: bold;	
+}
+
+.post-section h3 {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.post-section h3:hover {
+	color: var(--purple);
 }
 
 .post-list li {
-	margin: 2rem 0;
+	margin: 3rem 0;
 	font-size: 1.0rem;
-	cursor: pointer;
+	padding-bottom: 1rem;
+}
+
+.post-list li:not(:last-child) {
+	border-bottom: 1px solid var(--background-secondary);
 }
 
 .post__description {
 	text-align: justify;
 	margin-top: 1rem;
+	margin-bottom: 1.5rem;
 	line-height: 1.5rem;
 }
 
 .post__bar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-grow: 1;
-	background-color: var(--background-secondary);
+	transform: scale(1.1);
+	margin: 1rem 0;
+	transform-origin: left;
 }
 
-.post__bar .post__details {
-	display: flex;
-	flex-grow: 1;
-}
-
-.post__details div {
-	padding-left: 0.9rem;
-	padding-right: 0.4rem;
+.post__category {
+	background-color: var(--purple);
+	color: var(--background);
+	font-weight: bold;
 	position: relative;
-	height: 18px;
+	z-index: 2;
+	padding-right: 0.4rem;
+	padding-left: 0.4rem;
 	display: flex;
 	align-items: center;
 }
 
- .post__category {
-	background-color: var(--purple);
-	color: var(--background);
-	font-weight: bold;
-}
-
- .post__category:after {
+.post__category:after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -160,44 +176,27 @@ hr {
 	border-bottom: 9px solid transparent;
 }
 
-.post__title {
-	margin-left: 1rem;
-	width: 100%;
-	display: block;
-	padding-left: 0.9rem;
-}
-
 .post__added {
-	background-color: var(--orange);
+	background-color: var(--yellow);
 	color: var(--background);
 	font-weight: bold;
-	padding-right: 0.9rem;
-	padding-left: 0.4rem;
+	padding: 0 0.9rem;
 	position: relative;
 	height: 18px;
 	display: flex;
 	align-items: center;
-}
-
-@media (prefers-color-scheme: light) {
-	.post__category {
-		font-weight: normal;
-	}
-
-	.post__added {
-		font-weight: normal;
-	}
+	z-index: 1;
 }
 
 .post__added:before {
 	content: "";
 	display: block;
 	position: absolute;
-	left: -18px;
+	right: -18px;
 	bottom: 0;
 	border-top: 9px solid transparent;
-	border-left: 9px solid transparent;
-	border-right: 9px solid var(--orange);
+	border-right: 9px solid transparent;
+	border-left: 9px solid var(--yellow);
 	border-bottom: 9px solid transparent;
 }
 
@@ -208,13 +207,11 @@ article nav {
 article h1 {
 	margin: 2.8rem 0 1,2rem;
 	font-size: 2.2rem;
-	font-family: BigBlue_Terminal, monospace;
 }
 
 article h2 {
 	margin: 2.7rem 0 1.2rem;
 	font-size: 1.8rem;
-	font-family: BigBlue_Terminal, monospace;
 }
 
 article img {
@@ -268,4 +265,36 @@ article pre {
 article pre code {
 	color: var(--green);
 	padding: 0;
+}
+
+.about-me {
+	width: 50%;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+	.about-me {
+		width: 100%;
+	}
+}
+
+.about-me strong {
+	color: var(--green);
+}
+
+.about-me h2 { 
+	font-weight: bold;
+	margin-bottom: 2rem;
+}
+
+.about-me p {
+	font-size: 1.2rem;	
+	line-height: 1.5;
+}
+
+.about-me a {
+	text-decoration: underline;
+	font-style: italic;
+	font-weight: bold;
 }

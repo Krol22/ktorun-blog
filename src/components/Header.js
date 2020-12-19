@@ -15,7 +15,6 @@ const Header = () => (
         </a>
       </nav>
     </header>
-    <hr />
   </>
 )
 
