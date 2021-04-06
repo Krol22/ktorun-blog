@@ -1,0 +1,147 @@
+---
+slug: "/21/04/neovim-frontend-setup"
+date: "2021-04-09"
+category: "neovim"
+pageTitle: "Neovim setup for frontend development"
+description: "I've been working on my vim configuration from time to time now for about 4 years. With this post I would like to go through it and show you what am I using for web development."
+---
+
+I've been working on my vim configuration from time to time now for about 4 years. With this post I would like to go through it and show you what am I using for web development. Also in the near future I would like to start updating my configuration and move it eventually to `lua` as it's fully supported in neovim but first I need to refresh my memory about current configuration and I think writing about it is the best way to achieve it. I want to create few posts about this process so you can treat this post as the first part.
+
+You can see each file in my [yadf](https://github.com/Krol22/yadf/tree/master/nvim) (yet-another-dot-files) repository.
+
+My neovim setup is splitted into several files:
+
+- `init.vim` - initial nvim file. Contains all plugins and loads other .vim files
+- `config.vim` - main configuration file, contains all commands,
+- `day.vim` - small plugin for toggling light/dark theme,
+- `coc-settings.json` - settings for coc plugin,
+- `eslint-local.vim` - small plugin for launching local eslint instead of global,
+- `coc.vim` - basic configuration for coc plugin,
+
+We will go through each of them.
+
+### init.vim
+
+Loads all of the plugins that I'm currently using in my standard workflow. Also it's loading rest of my `.vim` files. For plugin loading I'm using Vundle as I never had any problem with it and didn't need to move to different plugins manager.
+
+This is my current (2021-04-09) list of plugins:
+
+- [VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim) - vim plugin manager,
+- [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) - VSCode autocompletion
+- [neomake/neomake](https://github.com/neomake/neomake) - asynchronous code linting,
+- [scrooloose/nerdcommenter](https://github.com/scrooloose/nerdcommenter) - comment functions so powerful--no comment necessary,
+- [jiangmiao/auto-pairs](https://github.com/jiangmiao/auto-pairs) - insert/delete brackets, parens, quotes in pair,
+- [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) - multiple cursors support,
+- [alvan/vim-closetag](https://github.com/alvan/vim-closetag) - autoclose HTML tags,
+- [elzr/vim-json](https://github.com/elzr/vim-json) - highlighting JSON for vim,
+- [Yggdroot/indentLine](https://github.com/Yggdroot/indentLine) - show vertical lines at each indentation level of code,
+- [romainl/vim-qf](https://github.com/romainl/vim-qf) - vim quickfix window,
+- [othree/yajs.vim](https://github.com/othree/yajs.vim) - JS syntax highlighting for vim,
+- [tpope/vim-surround](https://github.com/tpope/vim-surround) - remove and add parentheses, brackets, quotes, XML tags, and more with ease,
+- [tpope/vim-vinegar](https://github.com/tpope/vim-vinegar)- netrw (built in directory browser) but better,
+- [tpope/vim-sleuth](https://github.com/tpope/vim-sleuth) - automatically adjusts 'shiftwidth' and 'expandtab' based on current file,
+- [benjie/local-npm-bin.vim](https://github.com/benjie/local-npm-bin.vim) -
+- [luochen1990/rainbow](https://github.com/luochen1990/rainbow) - rainbow parentheses,
+- [leafgarland/typescript-vim](https://github.com/leafgarland/typescript-vim),
+- [peitalin/vim-jsx-typescript](https://github.com/peitalin/vim-jsx-typescript) - syntax for TypeScript,
+- [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim) - fzf for vim,
+- [MaxMEllon/vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) - React syntax highlighting and indenting plugin,
+- [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) - better status bar for vim,
+- [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) - themes for status bar,
+
+And for colors I'm currently using these two:
+- [sainnhe/vim-color-vanilla-cake](https://github.com/sainnhe/vim-color-vanilla-cake) - light theme,
+- [ntk148v/vim-horizon](https://github.com/ntk148v/vim-horizon) - dark theme,
+
+Most of them I use without any additional configuration. For rest of them I have a simple configurations in `config.vim` file.
+
+### config.vim
+
+Contains all of the configuration for neovim and plugins. In the history it was pretty long file but now (146 lines) I'm happy with this "shorter" result. TBH I would like to shrink it even more.
+
+I've splitted my configuration for few parts:
+
+1. Mappings - contains basic shortcuts for nativation:
+
+```vim
+  nmap <silent> <C-h> :winc h<CR> "Ctrl + h -> move to pane on left,
+  nmap <silent> <C-j> :winc j<CR> "Ctrl + j -> move to pane below,
+  nmap <silent> <C-k> :winc k<CR> "Ctrl + k -> move to pane above,
+  nmap <silent> <C-l> :winc l<CR> "Ctrl + l -> move to pane on right,
+
+  nmap <silent> <C-q> :q <CR> " Ctrl + q -> quit file,
+  nmap <silent> <C-s> :w <CR> " Ctrl + s -> save file,
+
+  tnoremap <C-R> <C-\><C-n> " Ctrl + r -> exit from Terminal mode,
+
+  nmap <silent> <C-P> :Files<CR> " Ctrl + p -> open fzf
+
+  nmap <C-_> <leader>c<space> "Ctrl + / -> comment line under cursor
+  vmap <C-_> <leader>c<space> "Ctrl + / -> comment selected lines
+```
+
+Beside from default vim stuff these are the most used by me shortcuts. For rest I usually use Tab (for omni menu movement) and Ctrl + Space (triggers auto completion menu)
+
+2. Configs - contains configuration for vim. In this part I have my basic configuration for vim -> line numbers, indent, swap files etc. Each file contains comment with description so it should be easy for you to understand what each line/lines does.
+
+3. Neomake - configuration for async linters. Currently enabled makers
+
+- javascript - eslint,
+- html - htmlhint,
+- cpp - clang,
+- typescript - tslint,
+
+For eslint you can see that there is an extra option set `let b:neomake_javascript_eslint_exe = GetNpmBin('eslint')`. GetNpmBin is a custom function that I use for neomake to use local project eslint instead of global one installed in system if there is one available. It's defined in `eslint-local.vim`. Rest of this configuration is pretty standard.
+
+4. Comments - comments section contains some basic configuration for nerdcommenter plugin.
+5. fzf - configuration for showing fzf on this fancy window. You can see how it should look on the gif below.
+
+TODO -> gif here,
+
+### day.vim  
+- It's my small script for toggling between light and dark theme. Very simple to use, just press Ctrl-g in normal or visual mode to toggle themes between `horizon` and `vanilla-cake`. You can easily change these themes in line 4 and 5 or by setting `g:dark_colorscheme` and `g:light_colorscheme` variables to correct values.
+
+### coc.vim
+- It's a copied version of example configuration for coc extension. TBH I was so pleased to use it and I didn't change it at all. You can see it [here](https://github.com/neoclide/coc.nvim#example-vim-configuration).
+
+!Note - if you plan to use this configuration. After installing all plugins with `:PlugInstall` you need to install coc-tsserver extension for coc. You can do it with `:CocInstall` command:
+
+```
+  :CocInstall coc-tsserver
+```
+
+I user 3 more extensions [coc-emmet](https://github.com/neoclide/coc-emmet), [coc-markdownlint](https://github.com/fannheyward/coc-markdownlint) and [coc-tabnine](https://github.com/neoclide/coc-tabnine)
+
+Workflow or maybe what I like the most from my configuration. 
+
+- short and very easy to understand and use,
+- full autocompletion tslint engine easily available with just one key `TAB`
+
+
+- auto code linting on save,
+
+- easy pane movement,
+
+TODO -> gif here
+
+- quick movement between files with fzf window,
+
+TODO -> gif here
+
+- multiple coursors,
+
+TODO -> gif here
+
+- changing surroundings,
+
+TODO -> gif here
+
+- CocSearch,
+
+TODO -> gif here
+
+- easy code commenting,
+
+TODO -> gif here
+
