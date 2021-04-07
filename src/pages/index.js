@@ -28,6 +28,7 @@ export const query = graphql`
           slug
           date(formatString: "MMMM DD, YYYY")
           description
+          category
         }
       }
     }

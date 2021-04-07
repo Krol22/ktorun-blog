@@ -10,12 +10,12 @@ const PostList = ({ posts }) => {
     <div className="post-section">
       <h2>Latest articles:</h2>
       <ul className="post-list">
-        {posts.map(({ pageTitle, slug, date, description }) => (
+        {posts.map(({ pageTitle, slug, date, description, category }) => (
           <li key={slug}>
             <h3 onClick={() => onPostClick(slug)}>{pageTitle}</h3>
             <p className="post__description">{description}</p>
             <div className="post__bar">
-              <div className="post__category">tech</div>
+              <div className="post__category">{category}</div>
               <div className="post__added">Added: {date}</div>
             </div>
           </li>

@@ -12,15 +12,13 @@ export default function Template({ data }) {
   return (
     <Layout title={pageTitle}>
       <article>
-        {/*
-        <nav className="post__bar">
-          <div className="post__details">
+        <nav>
+          <h1 className="post__title">{pageTitle}</h1>
+          <div className="post__bar">
             <div className="post__category">{category}</div>
-            <div className="post__title">{pageTitle}</div>
+            <div className="post__added">Added: {date}</div>
           </div>
-          <div className="post__added">Added: {date}</div>
         </nav>
-        */}
         <main>
           <MDXRenderer>{body}</MDXRenderer>
         </main>
