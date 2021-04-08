@@ -3,12 +3,21 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 console.log(`${__dirname}/src/data/posts`)
 
 module.exports = {
   /* Your site config here */
   plugins: [
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+      }
+    },
     "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-mdx",
@@ -19,8 +28,17 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1200,
+              quality: 90,
             },
           },
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: true,
+            }
+          }
         ],
       },
     },

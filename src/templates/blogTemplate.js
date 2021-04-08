@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/Layout"
+import Newsletter from "../components/Newsletter"
 
 export default function Template({ data }) {
   const { mdx } = data
@@ -22,6 +23,8 @@ export default function Template({ data }) {
         <main>
           <MDXRenderer>{body}</MDXRenderer>
         </main>
+        <hr />
+        <Newsletter />
       </article>
     </Layout>
   )

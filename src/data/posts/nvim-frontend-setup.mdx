@@ -1,31 +1,29 @@
 ---
-slug: "/21/04/neovim-frontend-setup"
+slug: "neovim-frontend-setup"
 date: "2021-04-09"
 category: "neovim"
 pageTitle: "Neovim setup for frontend development"
-description: "I've been working on my vim configuration from time to time now for about 4 years. With this post I would like to go through it and show you what am I using for web development."
+description: "I've been working on my vim configuration from time to time now for about 4 years. With this post, I would like to go through it and show you what am I using for web development."
 ---
 
 ![heading](../images/heading.png)
 
-I've been working on my vim configuration from time to time now for about 4 years. With this post I would like to go through it and show you what am I using for web development in 2021.
+I've been working on my vim configuration from time to time now for about 4 years. With this post, I would like to go through it and show you what am I using for web development in 2021.
 
-Also in the near future I would like to start updating my configuration and move it eventually to `lua` as it's fully supported in neovim but first I need to refresh my memory about current configuration and I think writing about it is the best way to achieve it. I want to create few posts about this process so you can treat this one as the first part.
+Also shortly, I would like to start updating my configuration and move it eventually to `lua` as it's fully supported in neovim but first I need to refresh my memory about the current configuration and I think writing about it is the best way to achieve it. I want to create few posts about this process so you can treat this one as the first part.
 
 Supported features: 
 
 - short and very easy to understand and use configuration,
-- full autocompletion tslint engine easily accesible with just `TAB` key,
+- full autocompletion tslint engine easily accessible with just `TAB` key,
 - auto code linting on save,
 - easy pane movement,
 - quick movement between files with fzf window,
 - simple file management with netrw,
-- multiple coursors,
+- multiple cursors,
 - changing surroundings,
-- search stuff in project with CocSearch,
+- search stuff in a project with CocSearch,
 - easy code commenting,
-
-You can see each file in my [yadf](https://github.com/Krol22/yadf/tree/master/nvim) (yet-another-dot-files) repository.
 
 My neovim setup is splitted into several files:
 
@@ -36,11 +34,11 @@ My neovim setup is splitted into several files:
 - `eslint-local.vim` - small plugin for launching local eslint instead of global,
 - `coc.vim` - basic configuration for coc plugin,
 
-We will go through each of them.
+You can see each file in my [yadf](https://github.com/Krol22/yadf/tree/master/nvim) (yet-another-dot-files) repository.
 
-### init.vim
+### `init.vim`
 
-Loads all of the plugins that I'm currently using in my standard workflow. Also it's loading rest of my `.vim` files. For plugin loading I'm using Vundle as I never had any problem with it and didn't need to move to different plugins manager.
+Loads all of the plugins that I'm currently using in my standard workflow. Also, it's loading the rest of my `.vim` files. For plugin loading, I'm using Vundle as I never had any problem with it and didn't need to move to a different plugins manager.
 
 This is my current (2021-04-09) list of plugins:
 
@@ -68,42 +66,49 @@ Syntax highlighting:
 - [MaxMEllon/vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) - jsx
 - [peitalin/vim-jsx-typescript](https://github.com/peitalin/vim-jsx-typescript) - tsx,
 
-And for colors I'm currently using these two:
+And for colors I'm currently using these two plugins:
 - [sainnhe/vim-color-vanilla-cake](https://github.com/sainnhe/vim-color-vanilla-cake) - light theme,
 - [ntk148v/vim-horizon](https://github.com/ntk148v/vim-horizon) - dark theme,
 
-Most of them I use without any additional configuration. For rest of them I have a simple configurations in `config.vim` file.
+Most of them I use without any additional configuration. For the rest of them, I have a simple configuration in the `config.vim` file.
 
-### config.vim
+### `config.vim`
 
-Contains all of the configuration for neovim and plugins. In the history it was pretty long file but now (146 lines) I'm happy with this "shorter" result. TBH I would like to shrink it even more.
+Contains all of the configurations for neovim and plugins. In history, it was a pretty long file but now (146 lines) I'm happy with this "shorter" result. TBH I would like to shrink it even more.
 
 I've splitted my configuration for few parts:
 
 1. Mappings - contains basic shortcuts for nativation:
 
 ```vim
-  nmap <silent> <C-h> :winc h<CR> "Ctrl + h -> move to pane on left,
-  nmap <silent> <C-j> :winc j<CR> "Ctrl + j -> move to pane below,
-  nmap <silent> <C-k> :winc k<CR> "Ctrl + k -> move to pane above,
-  nmap <silent> <C-l> :winc l<CR> "Ctrl + l -> move to pane on right,
+ nmap <silent> <C-h> :winc h<CR> "Ctrl + h -> move to pane on left,
+ nmap <silent> <C-j> :winc j<CR> "Ctrl + j -> move to pane below,
+ nmap <silent> <C-k> :winc k<CR> "Ctrl + k -> move to pane above,
+ nmap <silent> <C-l> :winc l<CR> "Ctrl + l -> move to pane on right,
 
-  nmap <silent> <C-q> :q <CR> "Ctrl + q -> quit file,
-  nmap <silent> <C-s> :w <CR> "Ctrl + s -> save file,
+ nmap <silent> <C-q> :q <CR> "Ctrl + q -> quit file,
+ nmap <silent> <C-s> :w <CR> "Ctrl + s -> save file,
 
-  tnoremap <C-R> <C-\><C-n> "Ctrl + r -> exit from Terminal mode,
+ tnoremap <C-R> <C-\><C-n> "Ctrl + r -> exit from Terminal mode,
 
-  nmap <silent> <C-P> :Files<CR> "Ctrl + p -> open fzf
+ nmap <silent> <C-P> :Files<CR> "Ctrl + p -> open fzf
 
-  nmap <C-_> <leader>c<space> "Ctrl + / -> comment line under cursor
-  vmap <C-_> <leader>c<space> "Ctrl + / -> comment selected lines
+ nmap <C-_> <leader>c<space> "Ctrl + / -> comment line under cursor
+ vmap <C-_> <leader>c<space> "Ctrl + / -> comment selected lines
 
-  nnoremap <C-f> :CocSearch<space> "Ctrl + f -> search in files,
+ nnoremap <C-f> :CocSearch<space> "Ctrl + f -> search in files,
 ```
 
-Beside from default vim stuff these are the most used by me shortcuts. For rest I usually use `TAB` and `Ctrl + Space` (triggers auto completion menu)
+The rest shortcuts that I use daily are usually set up by plugin by default. You can check the documentation for these plugins to get more information about the functionalities that they can provide. 
 
-2. Configs - contains configuration for vim. In this part I have my basic configuration for vim -> line numbers, indent, swap files etc. Each file contains comment with description so it should be easy for you to understand what each line/lines does.
+But apart from shortcuts defined in the Mappings section here are 4 shortcuts that I think I use the most:
+
+- `-` open file explorer,
+- `Ctrl+n` in normal mode to trigger multiple cursors,
+- `Ctrl+space` triggers autocompletion menu,
+- `Tab` moving inside autocompletion menu,
+
+2. Configs - contains configuration for vim. In this part, I have my basic configuration for vim -> line numbers, indent, swap files, etc. Each file contains comments with descriptions so it should be easy for you to understand what each line does.
 
 3. Neomake - configuration for async linters. Currently enabled makers
 
@@ -112,25 +117,27 @@ Beside from default vim stuff these are the most used by me shortcuts. For rest 
 - cpp - clang,
 - typescript - tslint,
 
-For eslint you can see that there is an extra option set `let b:neomake_javascript_eslint_exe = GetNpmBin('eslint')`. GetNpmBin is a custom function that I use for neomake to use local project eslint instead of global one installed in system if there is one available. It's defined in `eslint-local.vim`. Rest of neomake configuration is pretty standard.
+For eslint you can see that there is an extra option set `let b:neomake_javascript_eslint_exe = GetNpmBin('eslint')`. GetNpmBin is a custom function that I use for neomake to use local project eslint instead of the global one installed in the system if there is one available. It's defined in `eslint-local.vim`. The rest of the neomake configuration is pretty standard.
 
-4. Comments - this section contains some basic configuration for nerdcommenter plugin.
-5. fzf - configuration for showing fzf on this fancy window. You can see how it should look on the gif below.
+4. Comments - this section contains some basic configurations for the nerdcommenter plugin.
+5. fzf - configuration for showing fzf on this fancy window. On the screenshot below you can see how it looks.
 
-![fzf](../images/fzfwindow.gif)
+![fzf](../images/fzf.png)
 
-### day.vim  
-- It's my small script for toggling between light and dark theme. Very simple to use, just press Ctrl-g in normal or visual mode to toggle themes between `horizon` and `vanilla-cake`. You can easily change these themes in line 4 and 5 or by setting `g:dark_colorscheme` and `g:light_colorscheme` variables to correct values.
+### `day.vim`
+`day.vim` is my small script for toggling between light and dark themes. Very simple to use, just press Ctrl-g in normal or visual mode to toggle themes between `horizon` and `vanilla-cake`. You can easily change these themes in lines 4 and 5 or by setting `g:dark_colorscheme` and `g:light_colorscheme` variables to correct values.
 
-### coc.vim
-- It's a copied version of example configuration for coc extension. ll. You can see it [here](https://github.com/neoclide/coc.nvim#example-vim-configuration).
+### `coc.vim`
+It's a copied version of the example configuration for coc extension. You can see it [here](https://github.com/neoclide/coc.nvim#example-vim-configuration).
 
-!Note - if you plan to use this configuration. After installing all plugins with `:PlugInstall` you need to install coc-tsserver extension for coc. You can do it with `:CocInstall` command:
+!Note - if you plan to use this configuration. After installing all plugins with `:PlugInstall` you need to install a coc-tsserver extension for coc. You can do it with the `:CocInstall` command:
 
 ```
-  :CocInstall coc-tsserver
+ :CocInstall coc-tsserver
 ```
 
-Apart from [coc-tsserver](https://github.com/neoclide/coc-tsserver) I use 3 more extensions [coc-emmet](https://github.com/neoclide/coc-emmet), [coc-markdownlint](https://github.com/fannheyward/coc-markdownlint) and [coc-tabnine](https://github.com/neoclide/coc-tabnine)
+Apart from [coc-tsserver](https://github.com/neoclide/coc-tsserver) I use 3 more extensions [coc-emmet](https://github.com/neoclide/coc-emmet), [coc-markdownlint](https://github.com/fannheyward/coc-markdownlint) and [coc-tabnine](https://github.com/neoclide/coc-tabnine).
 
-As you can see this setup is really simple but it gives me many functionalities that I use on daily basis.
+You can see this setup is really simple but it gives me many functionalities that I use on daily basis. If you have any suggestions what I could improve or questions about it feel free to message me on [twitter](https://twitter.com/krol22ee).
+
+That all from me for this post see you in the next time!
