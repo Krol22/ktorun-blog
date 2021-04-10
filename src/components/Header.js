@@ -10,7 +10,11 @@ const Header = () => (
       {false && (
         <nav>
           <Link to="/">HOME</Link> /
-          <a target="_blank" rel="noopener norefer" href="https://ktorun.xyz">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://pipboy.ktorun.xyz"
+          >
             {" "}
             WEBPAGE
           </a>
