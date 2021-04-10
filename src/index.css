@@ -19,14 +19,7 @@ button,
 input,
 optgroup,
 select,
-textarea,html input[type="button"],
-input[type="reset"],
-input[type="submit"],button[disabled],
-html input[disabled],button::-moz-focus-inner,
-input::-moz-focus-inner, input[type="checkbox"],
-input[type="radio"], input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button, input[type="search"], input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+textarea {
 	border:none;
 	background-image:none;
 	background-color:transparent;
@@ -359,3 +352,94 @@ article pre code {
 	width: 100%;
 }
 
+.newsletter {
+	margin-top: 6rem;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid var(--background-secondary);
+	padding: 3rem 4rem;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+@media (max-width: 600px) {
+	.newsletter {
+		width: 100%;
+	}
+}
+
+.newsletter .newsletter__header {
+}
+
+.newsletter .newsletter__header h3 {
+	margin: 2rem 0;
+	text-align: center;
+}
+
+.newsletter .newsletter__header p {
+	line-height: 1.5;
+}
+
+.newsletter form {
+	margin: 1rem 0;
+	display: flex;
+	position: relative;
+}
+
+.newsletter .button {
+	margin: .5rem 0;
+}
+
+.input {
+	padding: 1rem;
+	margin: .5rem 0;
+	border: 2px solid var(--cyan);
+	transition: .2s border ease-in-out;
+}
+
+.input--error {
+	border-color: var(--red);
+}
+
+.input--sended {
+	border-color: var(--green);
+}
+
+.button {
+	display: block;
+	padding: 10px 30px;
+	background-color: var(--cyan);
+	color: var(--background);
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color ease-in-out .2s;
+}
+
+.button--sended {
+	background-color: var(--green)
+}
+
+.button--error {
+	background-color: var(--red);
+}
+
+.newsletter__form-error,
+.newsletter__form-sended
+{
+	position: absolute;
+	top: 100%;
+	text-align: justify;
+	font-size: 0.925rem;
+	font-weight: bold;
+}
+
+.newsletter__form-error {
+	color: var(--red);
+}
+
+.newsletter__form-sended {
+	color: var(--green);
+}

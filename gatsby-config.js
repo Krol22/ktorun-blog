@@ -5,7 +5,7 @@
  */
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 console.log(`${__dirname}/src/data/posts`)
 
@@ -16,7 +16,7 @@ module.exports = {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
-      }
+      },
     },
     "gatsby-plugin-sharp",
     {
@@ -37,8 +37,8 @@ module.exports = {
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: true,
-            }
-          }
+            },
+          },
         ],
       },
     },

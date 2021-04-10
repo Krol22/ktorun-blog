@@ -2,7 +2,7 @@ import React from "react"
 
 const Footer = () => (
   <footer className="page-footer">
-    © 2020 Karol Toruń /
+    © 2021 Ktoruń /
     <a target="_blank" rel="noopener norefer" href="https://twitter.com">
       {" "}
       TWITTER

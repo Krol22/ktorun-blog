@@ -1,1 +1,1 @@
-require("./src/prism-theme.css");
+require("./src/prism-theme.css")
