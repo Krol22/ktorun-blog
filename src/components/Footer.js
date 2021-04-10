@@ -2,7 +2,7 @@ import React from "react"
 
 const Footer = () => (
   <footer className="page-footer">
-    © 2021 Ktoruń /
+    © 2021 K.Toruń /
     <a target="_blank" rel="noopener noreferrer" href="https://twitter.com">
       {" "}
       TWITTER
@@ -15,7 +15,7 @@ const Footer = () => (
     >
       {" "}
       GITHUB
-    </a>
+    </a>{" "}
     /
     <a
       target="_blank"
