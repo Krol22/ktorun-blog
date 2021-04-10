@@ -16,6 +16,7 @@ const Footer = () => (
       {" "}
       GITHUB
     </a>
+    /
     <a
       target="_blank"
       rel="noopener noreferrer"
