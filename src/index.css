@@ -41,7 +41,19 @@ div {
 	padding: 2rem;
 	margin-bottom: 1rem;
 	font-size: 1rem;
-	max-width: 1400px;
+	max-width: 1200px;
+}
+
+@media (max-width: 650px) {
+	.blog {
+		padding: 1rem;
+	}
+}
+
+@media (max-width: 450x) {
+	.blog {
+		padding: .5rem;
+	}
 }
 
 h1 {

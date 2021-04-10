@@ -7,13 +7,15 @@ const Header = () => (
       <h1>
         <Link to="/">K.Torun</Link>
       </h1>
-      <nav>
-        <Link to="/">HOME</Link> /
-        <a target="_blank" rel="noopener norefer" href="https://ktorun.xyz">
-          {" "}
-          WEBPAGE
-        </a>
-      </nav>
+      {false && (
+        <nav>
+          <Link to="/">HOME</Link> /
+          <a target="_blank" rel="noopener norefer" href="https://ktorun.xyz">
+            {" "}
+            WEBPAGE
+          </a>
+        </nav>
+      )}
     </header>
   </>
 )
