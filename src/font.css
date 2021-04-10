@@ -2,61 +2,61 @@
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-SemiBold.ttf") format("truetype");
 	font-weight: 600;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-Regular.ttf") format("truetype");
 	font-weight: 400;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-Medium.ttf") format("truetype");
 	font-weight: 500;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-Light.ttf") format("truetype");
 	font-weight: 300;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-ExtraLight.ttf") format("truetype");
 	font-weight: 200;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-ExtraBold.ttf") format("truetype");
 	font-weight: 800;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-Bold.ttf") format("truetype");
 	font-weight: 700;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: Inconsolata;
 	src: url("./assets/fonts/Inconsolata-Black.ttf") format("truetype");
 	font-weight: 900;
-	font-display: fallback;
+	font-display: block;
 }
 
 @font-face {
 	font-family: BigBlue_Terminal;
 	src: url("./assets/fonts/BigBlue_Terminal_437TT.ttf") format("truetype");
 	font-weight: 400;
-	font-display: fallback;
+	font-display: block;
 }
