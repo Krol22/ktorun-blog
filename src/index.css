@@ -164,10 +164,14 @@ hr {
 	border-bottom: 1px solid var(--background-secondary);
 }
 
+.post {
+	cursor: pointer;
+}
+
 .post__description {
 	text-align: justify;
 	margin-top: 1rem;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1.2rem;
 	line-height: 1.5rem;
 }
 
@@ -231,6 +235,16 @@ hr {
 	border-right: 9px solid transparent;
 	border-left: 9px solid var(--yellow);
 	border-bottom: 9px solid transparent;
+}
+
+.post__link {
+	display: block;
+	text-decoration: underline;
+	margin-bottom: 1.2rem;
+}
+
+.post__link:hover {
+	color: var(--purple);
 }
 
 article nav {
