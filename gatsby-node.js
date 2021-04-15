@@ -1,3 +1,5 @@
+const path = require("path")
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
   const blogPostTemplate = require.resolve("./src/templates/blogTemplate")
@@ -31,5 +33,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         slug: node.frontmatter.slug,
       },
     })
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
   })
 }

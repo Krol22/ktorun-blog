@@ -21,7 +21,10 @@ export default function Home({ data }) {
 
 export const query = graphql`
   query BlogPostsQuery {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { type: { eq: "public" } } }
+    ) {
       nodes {
         frontmatter {
           pageTitle

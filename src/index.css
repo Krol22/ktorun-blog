@@ -68,6 +68,7 @@ header h1 a {
 	font-size: 2.1rem;
 	font-family: BigBlue_Terminal;
 	color: var(--green);
+	user-select: none;
 }
 
 header h1:after {
@@ -204,6 +205,12 @@ article nav {
 	margin-bottom: 4rem;
 }
 
+.article__heading {
+	margin: 3rem 0;
+	width: 80%;
+	padding-bottom: 1rem;
+}
+
 article h1 {
 	margin: 2.8rem 0 1,2rem;
 	font-size: 2.2rem;
@@ -260,11 +267,28 @@ article pre {
 	letter-spacing: 1px;
 	line-height: 1.5;
 	font-size: 0.9rem;
+	position: relative;
 }
 
 article pre code {
 	color: var(--green);
 	padding: 0;
+}
+
+.article__content {
+	margin-top: 2rem;
+}
+
+.code-cpy-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: var(--background-secondary);
+	text-transform: uppercase;
+	padding: 0.2rem 0.5rem;
+	color: var(--foreground);
+	cursor: pointer;
+	border: none;
 }
 
 .about-me {
